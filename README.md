@@ -9,11 +9,11 @@ Run
 On the first run, it needs an ssh key passed in order to setup the gitolite-admin
 key:
 
-    docker run -e SSH_KEY="$(cat ~/.ssh/id_rsa.pub)" milocasagrande/dockerize-gitolite
+    docker run -d -t -p 22:22 -e SSH_KEY="$(cat ~/.ssh/id_rsa.pub)" milocasagrande/dockerize-gitolite
 
 On subsequent run, it will use the gitolite-admin repository created before:
 
-    docker run milocasagrande/dockerize-gitolite
+    docker run -d -t -p 22:22 milocasagrande/dockerize-gitolite
 
 Volumes
 -------
