@@ -6,7 +6,7 @@ if [ -d ./.ssh ]; then
     chown -R git:git ./.ssh
 fi
 
-# If we have a repositories/ directory make sure the owner its correct.
+# If we have a repositories/ directory make sure the owner is correct.
 if [ -d ./repositories ]; then
     chown -R git:git ./repositories
 fi
