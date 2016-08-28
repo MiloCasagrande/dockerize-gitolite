@@ -41,4 +41,4 @@ else
 fi
 
 # Execute what remains.
-exec $*
+exec "$@"
