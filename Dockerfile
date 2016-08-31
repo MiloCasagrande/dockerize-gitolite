@@ -9,8 +9,7 @@ RUN apt-get update && apt-get install -y -qq \
     git \
     git-core \
     python3 \
-    python3-redis \
-    python-hiredis
+    python3-redis
 
 # The git user.
 RUN adduser --system --group --shell /bin/sh git
