@@ -81,6 +81,14 @@
 
     # ------------------------------------------------------------------
 
+    ACCESS_2 => [
+        'access-2/setup-trigger',
+    ],
+
+    POST_GIT => [
+        'post-git/run-trigger',
+    ],
+
     # List of commands and features to enable
 
     ENABLE => [
