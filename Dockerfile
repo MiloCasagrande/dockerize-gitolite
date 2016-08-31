@@ -3,7 +3,14 @@ FROM debian:jessie
 MAINTAINER Milo Casagrande <milo.casagrande@linaro.org>
 LABEL Version="1.0" Description="Run gitolite in a container"
 
-RUN apt-get update && apt-get install -y -qq sudo openssh-server git git-core python3
+RUN apt-get update && apt-get install -y -qq \
+    sudo \
+    openssh-server \
+    git \
+    git-core \
+    python3 \
+    python3-redis \
+    python-hiredis
 
 # The git user.
 RUN adduser --system --group --shell /bin/sh git
