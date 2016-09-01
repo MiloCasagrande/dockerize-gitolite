@@ -24,13 +24,7 @@ On subsequent run, it will use the gitolite-admin repository created before:
 
     docker run -d -t -p 22:22 --link redis-server:redis milocasagrande/dockerize-gitolite
 
-By default, the Redis host is set to `redis` in the gitolite triggers, you can
-override that by passing an environment variable named `REDIS_HOST`.
-
-Other environment variables that can be passed are:
-
-* `REDIS_PORT`
-* `REDIS_PASSWORD`
+By default, the Redis host is set to `redis` in the gitolite triggers.
 
 Volumes
 -------
