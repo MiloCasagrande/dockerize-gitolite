@@ -9,7 +9,8 @@ RUN apt-get update && apt-get install -y -qq \
     git \
     git-core \
     python3 \
-    python3-redis
+    python3-redis \
+    python3-zmq
 
 # The git user.
 RUN adduser --system --group --shell /bin/sh git
