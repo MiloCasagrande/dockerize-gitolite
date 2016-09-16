@@ -22,6 +22,8 @@ RUN cd /home/git/gitolite; su git -c "git checkout v3.6.5 &>/dev/null";
 RUN cd /home/git; gitolite/install -ln /usr/local/bin
 COPY gitolite.rc /home/git/.gitolite.rc
 
+RUN cd /home/git; su git -c "git clone https://github.com/MiloCasagrande/key-signup.git"
+
 # https://github.com/docker/docker/issues/5892
 RUN chown -R git:git /home/git
 
@@ -36,7 +38,11 @@ RUN sed -i '/session    required     pam_loginuid.so/d' /etc/pam.d/sshd
 
 COPY setup.sh /
 RUN chmod +x /setup.sh
-ENTRYPOINT ["/setup.sh"]
+
+COPY run-signup.sh /
+RUN chmod +x /run-signup.sh
+
+ENTRYPOINT ["/run-signup.sh", "/setup.sh"]
 
 EXPOSE 22
 
