@@ -3,7 +3,7 @@ FROM debian:jessie
 MAINTAINER Milo Casagrande <milo.casagrande@linaro.org>
 LABEL Version="1.0" Description="Run gitolite in a container"
 
-RUN apt-get update && apt-get install -y -qq \
+RUN apt-get clean && apt-get update && apt-get install -y -qq \
     sudo \
     openssh-server \
     git \
