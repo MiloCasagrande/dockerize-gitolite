@@ -29,12 +29,6 @@ if [ -n "$SSH_KEY" -a ! -d "./repositories/gitolite-admin.git" ]; then
     su git -c "ln -s ./gitolite-dir/ ./.gitolite"
     chown -R git:git ./.gitolite
 else
-    if [ ! -h "./.gitolite" ]; then
-        rm -rf ./.gitolite/
-        su git -c "ln -s ./gitolite-dir/ ./.gitolite"
-        chown -R git:git ./.gitolite
-    fi
-
     # Move the bind mounted admin repo or gitolite will overwrite it.
     if [ -d "./repositories/gitolite-admin.git" ]; then
         mv ./repositories/gitolite-admin.git /tmp/gitolite-admin-tmp.git
@@ -49,6 +43,13 @@ else
         su git -c "cd /home/git/repositories/gitolite-admin.git && GL_LIBDIR=$(/usr/local/bin/gitolite query-rc GL_LIBDIR) hooks/post-update refs/heads/master"
 
         su git -c "/usr/local/bin/gitolite setup"
+    fi
+
+    # If we don't have the link, create it.
+    if [ ! -h "./.gitolite" -a -d "./gitolite-dir" ]; then
+        rm -rf ./.gitolite/
+        su git -c "ln -s ./gitolite-dir/ ./.gitolite"
+        chown -R git:git ./.gitolite
     fi
 fi
 
