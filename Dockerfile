@@ -22,7 +22,7 @@ RUN cd /home/git/gitolite; su git -c "git checkout v3.6.5 &>/dev/null";
 RUN cd /home/git; gitolite/install -ln /usr/local/bin
 COPY gitolite.rc /home/git/.gitolite.rc
 
-RUN cd /home/git; su git -c "git clone https://github.com/MiloCasagrande/key-signup.git"
+RUN cd /home/git; su git -c "git clone https://github.com/linaro-product/gitci-key-signup.git key-signup"
 
 # https://github.com/docker/docker/issues/5892
 RUN chown -R git:git /home/git
